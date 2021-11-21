@@ -29,9 +29,14 @@ class audioProcessor extends AudioWorkletProcessor {
 		let time = this.sampleRatio * this.audioSample;
 		let { byteSample } = this;
 		const drawBuffer = [];
+		
+		/*
+		hello i trying to add new mode but wtf it does not matter there is new code but GITHUB DOES NOT WANT TO UPLOAD IT
+		*/
+		
 		const isBytebeat = this.mode === 'Bytebeat';
 		const isFloatbeat = this.mode === 'Floatbeat';
-		const newMode = this.mode === '2048'; // STUPID GITHUB WHY YOU NOT USING WHY YOU NOT UPLOADING THIS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+		const AnewMode = this.mode === '2048'; // STUPID GITHUB WHY YOU NOT USING WHY YOU NOT UPLOADING THIS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 		
 		
 		for(let i = 0; i < chDataLen; ++i) {
@@ -54,7 +59,7 @@ class audioProcessor extends AudioWorkletProcessor {
 					} else if(isFloatbeat) {
 						this.lastValue = funcValue = Math.max(Math.min(funcValue, 1), -1);
 						this.lastByteValue = Math.round((funcValue + 1) * 127.5);
-					} else if(newMode) {
+					} else if(AnewMode){
 						this.lastByteValue = funcValue & 2047;
 						this.lastValue = this.lastByteValue / 127.5 - 1;
 					} else { // "Signed Byteveat"
