@@ -37,7 +37,7 @@ class audioProcessor extends AudioWorkletProcessor {
 		const isBytebeat = this.mode === 'Bytebeat';
 		const isFloatbeat = this.mode === 'Floatbeat';
 		const AnewMode = this.mode === '2048'; // STUPID GITHUB WHY YOU NOT USING WHY YOU NOT UPLOADING THIS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-		const AnewModeasFloatBeat = this.mode === 'C';
+		const AnewModeasFloatBeat = this.mode === 'DoubleBeat';
 		
 		
 		
