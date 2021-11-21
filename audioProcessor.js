@@ -31,7 +31,9 @@ class audioProcessor extends AudioWorkletProcessor {
 		const drawBuffer = [];
 		const isBytebeat = this.mode === 'Bytebeat';
 		const isFloatbeat = this.mode === 'Floatbeat';
-		const newMode = this.mode === '2048';
+		const newMode = this.mode === '2048'; // STUPID GITHUB WHY YOU NOT USING WHY YOU NOT UPLOADING THIS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+		
+		
 		for(let i = 0; i < chDataLen; ++i) {
 			time += this.sampleRatio;
 			const flooredTime = Math.floor(time);
