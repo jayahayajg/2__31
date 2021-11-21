@@ -37,6 +37,8 @@ class audioProcessor extends AudioWorkletProcessor {
 		const isBytebeat = this.mode === 'Bytebeat';
 		const isFloatbeat = this.mode === 'Floatbeat';
 		const AnewMode = this.mode === '2048'; // STUPID GITHUB WHY YOU NOT USING WHY YOU NOT UPLOADING THIS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+		const AnewModeasFloatBeat = this.mode === 'C';
+		
 		
 		
 		for(let i = 0; i < chDataLen; ++i) {
@@ -62,6 +64,9 @@ class audioProcessor extends AudioWorkletProcessor {
 					} else if(AnewMode){
 						this.lastByteValue = funcValue & 2047;
 						this.lastValue = this.lastByteValue / 127.5 - 1;
+					} else if(AnewModeasFloatBeat){
+						this.lastValue = funcValue = Math.max(Math.min(funcValue, 255), -255);
+						this.lastByteValue = Math.round((funcValue + 1) * 127.5);
 					} else { // "Signed Byteveat"
 						this.lastByteValue = (funcValue + 128) & 255;
 						this.lastValue = this.lastByteValue / 127.5 - 1;
