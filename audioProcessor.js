@@ -31,6 +31,8 @@ class audioProcessor extends AudioWorkletProcessor {
 		const drawBuffer = [];
 		const isBytebeat = this.mode === 'Bytebeat';
 		const isFloatbeat = this.mode === 'Floatbeat';
+		const is2048 = this.mode === '2048';
+		
 		for(let i = 0; i < chDataLen; ++i) {
 			time += this.sampleRatio;
 			const flooredTime = Math.floor(time);
@@ -46,11 +48,14 @@ class audioProcessor extends AudioWorkletProcessor {
 					if(isNaN(funcValue)) {
 						this.lastByteValue = NaN;
 					} if(isBytebeat) {
-						this.lastByteValue = funcValue & 255;
+						this.lastByteValue = funcValue & 2047;
 						this.lastValue = this.lastByteValue / 127.5 - 1;
 					} else if(isFloatbeat) {
 						this.lastValue = funcValue = Math.max(Math.min(funcValue, 1), -1);
 						this.lastByteValue = Math.round((funcValue + 1) * 127.5);
+					} else if(is2048) {
+						this.lastByteValue = funcValue & ;
+						this.lastValue = this.lastByteValue / 127.5 - 1;
 					} else { // "Signed Byteveat"
 						this.lastByteValue = (funcValue + 128) & 255;
 						this.lastValue = this.lastByteValue / 127.5 - 1;
