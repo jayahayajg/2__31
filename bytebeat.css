@@ -1,0 +1,364 @@
+/* ==[ Document ] ========================================================================================= */
+
+html {
+	background-color: #000;
+	color: #fff;
+	font-size: 15px;
+	font-family: Courier, Sans, sans-serif;
+}
+
+body {
+	margin: 0;
+}
+
+a, a:visited {
+	color: #89c2ff;
+}
+
+a:hover, code:hover {
+	color: #ed88fb !important;
+}
+
+.disabled {
+	display: none;
+}
+
+/* ==[ Containers ] ======================================================================================= */
+
+.container-expanded {
+	height: 100%;
+}
+
+.container-expanded + #container-scroll {
+	display: none;
+}
+
+#container-fixed {
+	display: flex;
+	flex-direction: column;
+	max-width: 1028px;
+	max-height: 100vh;
+}
+
+#container-scroll {
+	max-width: 1028px;
+	width: 100%;
+	margin-top: 4px;
+	overflow-y: auto;
+}
+
+#content {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	height: 100vh;
+}
+
+/* ==[ Canvas ] =========================================================================================== */
+
+#canvas-container {
+	display: flex;
+	position: relative;
+	cursor: pointer;
+	box-sizing: border-box;
+	border: 2px solid #bf8e31;
+	overflow: hidden;
+}
+
+#canvas-main {
+	width: 100%;
+	height: auto;
+}
+
+#canvas-timecursor {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	border-left: 2px solid #7a9dc4;
+	box-shadow: 0 0 8px #6ab2ff, 0 0 16px #fff;
+	left: 0;
+}
+
+/* ==[ Canvas play/pause button ] ========================================================================= */
+
+#canvas-container:hover > #canvas-toggleplay {
+	display: block;
+	background-image: linear-gradient(to bottom, #92aeec, #181f33) !important;
+}
+
+.canvas-initial {
+	display: block !important;
+	background-image: linear-gradient(to bottom, #67789d, #181f33);
+}
+
+.canvas-pause > #svg-canvas-play, .canvas-play > #svg-canvas-pause {
+	display: none;
+}
+
+#canvas-toggleplay {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding: 1px 8px;
+	color: #f0f0f0;
+	border-radius: 16px;
+	line-height: 0;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#canvas-toggleplay > svg {
+	width: 46px;
+	height: 46px;
+	fill: currentColor;
+}
+
+/* ==[ Editor ] =========================================================================================== */
+
+.container-expanded > #editor {
+	flex: auto;
+}
+
+#editor {
+	height: 200px;
+	padding: 0 2px 0 5px;
+	border: 2px solid white;
+	box-sizing: border-box;
+	color: #fff;
+	background-color: #000;
+	font: 14px/14px Monospace;
+	word-break: break-all;
+	outline: none;
+	resize: vertical;
+}
+
+#error {
+	color: #f92672;
+	word-break: break-all;
+}
+
+/* ==[ Library ] ========================================================================================== */
+
+code {
+	display: inline;
+	margin: 0px;
+	color: #ffcc53;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	word-break: break-all;
+	cursor: pointer;
+}
+
+.code-length, .code-samplerate {
+	color: gray;
+	cursor: default;
+}
+
+.code-load {
+	display: inline-block;
+	margin: 1px 0;
+	padding: 1px 5px;
+	border-radius: 3px;
+	color: #dfe5ee;
+	background-image: linear-gradient(to bottom, #4f4f4f, #11141a);
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.code-load:hover {
+	color: #c2dfff;
+	background-image: linear-gradient(to bottom, #364779, #1f2331);
+}
+
+.entry {
+	position: relative;
+}
+
+.entry-children > .entry:not(:last-child) {
+	margin-bottom: 3px;
+}
+
+.entry-children > .entry::before {
+	content: "\25CF";
+	position: absolute;
+	top: 2px;
+	left: -11px;
+	color: #555;
+	font-size: 10px;
+}
+
+.entry.star-white::before {
+	content: "\2605";
+	position: absolute;
+	top: -2px;
+	left: -12px;
+	color: white;
+	font-size: 11px;
+}
+
+.entry.star-yellow::before {
+	content: "\2605";
+	position: absolute;
+	top: -2px;
+	left: -12px;
+	color: yellow;
+	font-size: 11px;
+}
+
+.entry-top {
+	padding: 4px 4px 8px 16px;
+}
+
+.entry-top:not(:first-child) {
+	border-top: 1px solid #404040;
+}
+
+.library-content {
+	margin: 4px 0;
+	border-right: 1px solid #444;
+	border-bottom: 1px solid #444;
+	border-left: 1px solid #444;
+	border-radius: 3px;
+	font-size: 12px;
+}
+
+.library-header {
+	padding: 4px 5px;
+	border-radius: 3px;
+	background-image: linear-gradient(to bottom, #374157, #0b1122);
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.library-header:hover {
+	background-image: linear-gradient(to bottom, #3d4f79, #212b4a);
+	color: #c2dfff;
+}
+
+/* ==[ Controls ] ========================================================================================= */
+
+.control-button {
+	width: 32px;
+	height: 32px;
+}
+
+.control-button, .control-select {
+	height: 32px;
+	margin: 1px 2px;
+	border-radius: 6px;
+	color: #e3e3e3;
+	background-image: linear-gradient(to bottom, #959595, #242a37);
+	cursor: pointer;
+}
+
+.control-button:not([disabled]):hover, .control-select:hover {
+	color: #c2dfff;
+	background-image: linear-gradient(to bottom, #738cc1, #28314a)
+}
+
+.control-button:not([disabled]):active, .control-select:active  {
+	background-image: linear-gradient(to bottom, #505f84, #1c1e26);
+}
+
+.control-button > svg {
+	width: 32px;
+	height: 32px;
+	fill: currentColor;
+}
+
+#control-counter {
+	width: 80px;
+	height: 32px;
+	margin: 1px 2px 1px 0;
+	padding: 0 8px;
+	color: #e3e3e3;
+	background: linear-gradient(to top, #3a445e, #181c26);
+	border: none;
+	border-radius: 0 4px 4px 0;
+	font-weight: bold;
+	outline: none;
+	box-shadow: inset 0px 0px 12px rgba(202, 202, 202, 0.5);
+}
+
+#control-counter-units {
+	margin-right: 0;
+	text-align: center;
+	font: bold 13px tahoma;
+	line-height: 30px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	user-select: none;
+}
+
+#control-expand {
+	margin-left: auto;
+}
+
+.control-pause > #svg-control-play, .control-play > #svg-control-pause {
+	display: none;
+}
+
+#control-rec {
+	color: #b50000;
+}
+
+#control-scaledown[disabled] {
+	opacity: 0.5;
+	cursor: default;
+}
+
+.control-select {
+	padding-left: 4px;
+	border: none;
+	font-weight: bold;
+	outline: none;
+}
+
+.control-select > option {
+	color: #435071;
+}
+
+#control-volume {
+	appearance: none;
+	background-color: #2e3239;
+	width: 150px;
+	height: 14px;
+	margin: 10px 0 10px 4px;
+	border-radius: 15px;
+	align-self: center;
+}
+
+#control-volume::-moz-range-thumb {
+	width: 12px;
+	height: 28px;
+	border: none;
+	border-radius: 4px;
+	background-image: linear-gradient(to bottom, #aeaeae, #484c55);
+	cursor: pointer;
+}
+
+#control-volume::-moz-range-thumb:hover {
+	background-image: linear-gradient(to bottom, #90a7d7, #3f4c71);
+}
+
+#control-volume::-webkit-slider-thumb {
+	appearance: none;
+	width: 10px;
+	height: 28px;
+	border: none;
+	border-radius: 4px;
+	background-image: linear-gradient(to bottom, #aeaeae, #484c55);
+	cursor: pointer;
+}
+
+#control-volume::-webkit-slider-thumb:hover {
+	background-image: linear-gradient(to bottom, #90a7d7, #3f4c71);
+}
+
+.controls {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 2px 0;
+}
