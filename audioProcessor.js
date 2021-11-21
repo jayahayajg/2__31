@@ -31,6 +31,7 @@ class audioProcessor extends AudioWorkletProcessor {
 		const drawBuffer = [];
 		const isBytebeat = this.mode === 'Bytebeat';
 		const isFloatbeat = this.mode === 'Floatbeat';
+		const newMode = this.mode === '2048';
 		
 		
 		for(let i = 0; i < chDataLen; ++i) {
