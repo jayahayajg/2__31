@@ -30,13 +30,7 @@ const bytebeat = new class Bytebeat {
 		this.sampleRate = 8000;
 		this.settings = { drawMode: 'Points', drawScale: 5, isSeconds: false };
 		this.timeCursor = null;
-		document.addEventListener('DOMContentLoaded', async () => {
-			this.initControls();
-			this.initSettings();
-			await this.initAudioContext();
-			this.initLibraryEvents();
-			this.initEditor();
-		});
+		document.addEventListener('DOMContentLoaded', async () => { this.initControls(); this.initSettings(); await this.initAudioContext(); this.initLibraryEvents(); this.initEditor();});
 		document.addEventListener('visibilitychange', () => (this.isActiveTab = !document.hidden));
 	}
 	get saveData() {
