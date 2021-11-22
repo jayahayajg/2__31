@@ -105,7 +105,7 @@ const bytebeat = new class Bytebeat {
 		// Saving the last points of a segment
 		if(this.settings.drawScale) {
 			for(let y = 0; y < height; ++y) {
-				this.drawEndBuffer[y] = imageData.data[(drawWidth * (255 - y) + drawWidth - 1) << 2];
+				this.drawEndBuffer[y] = imageData.data[(drawWidth * (2048 - y) + drawWidth - 1) << 2];
 			}
 		}
 		// Placing a segment on the canvas
@@ -121,7 +121,7 @@ const bytebeat = new class Bytebeat {
 		this.drawBuffer = [{ t: endTime, value: buffer[bufferLen - 1].value }];
 	}
 	drawPoint(imageData, width, x, y, value) {
-		let idx = (width * (255 - y) + x) << 2;
+		let idx = (width * (2048 - y) + x) << 2;
 		imageData.data[idx++] = imageData.data[idx++] = imageData.data[idx++] = imageData.data[idx] = value;
 	}
 	expandEditor() {
