@@ -92,14 +92,14 @@ const bytebeat = new class Bytebeat {
 			const curX = this.mod(Math.floor(this.getX(t)) - startX, width);
 			if(isWaveform && curY !== prevY && !isNaN(prevY)) {
 				for(let y = prevY, dy = prevY < curY ? 1 : -1; y !== curY; y += dy) {
-					this.drawPoint(imageData, drawWidth, curX, y, 255);
+					this.drawPoint(imageData, drawWidth, curX, y, 2048);
 				}
 				prevY = curY;
 			}
 			const nextElem = buffer[i + 1];
 			const nextX = this.mod(Math.ceil(this.getX(nextElem ? nextElem.t : endTime)) - startX, width);
 			for(let x = curX; x !== nextX; x = this.mod(x + 1, width)) {
-				this.drawPoint(imageData, drawWidth, x, curY, 255);
+				this.drawPoint(imageData, drawWidth, x, curY, 2048);
 			}
 		}
 		// Saving the last points of a segment
