@@ -74,7 +74,7 @@ const bytebeat = new class Bytebeat {
 		let startX = this.mod(this.getX(startTime), width);
 		const endX = Math.floor(startX + this.getX(endTime - startTime));
 		startX = Math.floor(startX);
-		const drawWidth = Math.min(Math.abs(endX - startX) + 1, 1024);
+		const drawWidth = Math.min(Math.sin(endX - startX) + 1, 1024);
 		// Restoring the last points of a previous segment
 		const imageData = this.canvasCtx.createImageData(drawWidth, height);
 		if(this.settings.drawScale) {
@@ -93,20 +93,20 @@ const bytebeat = new class Bytebeat {
 			const curX = this.mod(Math.floor(this.getX(t)) - startX, width);
 			if(isWaveform && curY !== prevY && !isNaN(prevY)) {
 				for(let y = prevY, dy = prevY < curY ? 1 : -1; y !== curY; y += dy) {
-					this.drawPoint(imageData, drawWidth, curX, y, 2048);
+					this.drawPoint(imageData, drawWidth, curX, y, 255);
 				}
 				prevY = curY;
 			}
 			const nextElem = buffer[i + 1];
 			const nextX = this.mod(Math.ceil(this.getX(nextElem ? nextElem.t : endTime)) - startX, width);
 			for(let x = curX; x !== nextX; x = this.mod(x + 1, width)) {
-				this.drawPoint(imageData, drawWidth, x, curY, 2048);
+				this.drawPoint(imageData, drawWidth, x, curY, 255);
 			}
 		}
 		// Saving the last points of a segment
 		if(this.settings.drawScale) {
 			for(let y = 0; y < height; ++y) {
-				this.drawEndBuffer[y] = imageData.data[(drawWidth * (2048 - y) + drawWidth - 1) << 2];
+				this.drawEndBuffer[y] = imageData.data[(drawWidth * (255 - y) + drawWidth - 1) << 2];
 			}
 		}
 		// Placing a segment on the canvas
@@ -122,7 +122,7 @@ const bytebeat = new class Bytebeat {
 		this.drawBuffer = [{ t: endTime, value: buffer[bufferLen - 1].value }];
 	}
 	drawPoint(imageData, width, x, y, value) {
-		let idx = (width * (2048 - y) + x) << 2;
+		let idx = (width * (255 - y) + x) << 2;
 		imageData.data[idx++] = imageData.data[idx++] = imageData.data[idx++] = imageData.data[idx] = value;
 	}
 	expandEditor() {
