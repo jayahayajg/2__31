@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 const bytebeat = new class Bytebeat {
 	constructor() {
+		//ii2
 		this.audioCtx = null;
 		this.audioGain = null;
 		this.audioRecorder = null;
