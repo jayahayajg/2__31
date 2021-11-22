@@ -74,7 +74,7 @@ const bytebeat = new class Bytebeat {
 		let startX = this.mod(this.getX(startTime), width);
 		const endX = Math.floor(startX + this.getX(endTime - startTime));
 		startX = Math.floor(startX);
-		const drawWidth = Math.min(Math.sin(endX - startX) + 1, 1024);
+		const drawWidth = Math.min(Math.abs(endX - startX) + 1, 2048);
 		// Restoring the last points of a previous segment
 		const imageData = this.canvasCtx.createImageData(drawWidth, height);
 		if(this.settings.drawScale) {
