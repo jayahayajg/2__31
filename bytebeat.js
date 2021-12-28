@@ -352,7 +352,7 @@ const bytebeat = new class Bytebeat {
 		this.updateLocation();
 		this.sendData({ mode });
 	}
-	setFileFormat(fileformat, isSendData = true) {
+	setFileFormat=function(fileformat, isSendData = true) {
 		this.fileformat = fileformat;
 		this.toggleTimeCursor();
 		if(isSendData) {
@@ -365,7 +365,7 @@ const bytebeat = new class Bytebeat {
 		if(isSendData) {
 			this.sendData({ sampleRatio: this.sampleRate / this.audioCtx.sampleRate });
 		}
-	setScale(amount, buttonElem) 
+	setScale(amount, buttonElem) {
 		if(buttonElem && buttonElem.getAttribute('disabled')) {
 			return;
 		}
