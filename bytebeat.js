@@ -352,19 +352,19 @@ const bytebeat = new class Bytebeat {
 		this.updateLocation();
 		this.sendData({ mode });
 	}
-	setFileFormat=function(fileformat, isSendData = true) {
-		this.fileformat = fileformat;
-		this.toggleTimeCursor();
-		if(isSendData) {
-			this.sendData({ fileFormat: fileformat });
-		}
-	}
 	setSampleRate(sampleRate, isSendData = true) {
 		this.sampleRate = sampleRate;
 		this.toggleTimeCursor();
 		if(isSendData) {
 			this.sendData({ sampleRatio: this.sampleRate / this.audioCtx.sampleRate });
 		}
+	setFileFormat(fileformat, isSendData = true) {
+		this.fileformat = fileformat;
+		this.toggleTimeCursor();
+		if(isSendData) {
+			this.sendData({ fileFormat: fileformat });
+		}
+	}
 	setScale(amount, buttonElem) {
 		if(buttonElem && buttonElem.getAttribute('disabled')) {
 			return;
