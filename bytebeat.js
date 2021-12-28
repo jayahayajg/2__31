@@ -14,6 +14,7 @@ const bytebeat = new class Bytebeat {
 		this.controlCounter = null;
 		this.controlMode = null;
 		this.controlSampleRate = null;
+		this.controlFileFormat = null;
 		this.controlScaleDown = null;
 		this.controlTogglePlay = null;
 		this.controlVolume = null;
