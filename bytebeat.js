@@ -365,7 +365,7 @@ const bytebeat = new class Bytebeat {
 		if(isSendData) {
 			this.sendData({ sampleRatio: this.sampleRate / this.audioCtx.sampleRate });
 		}
-	setScale(amount, buttonElem) {
+	setScale(amount, buttonElem) 
 		if(buttonElem && buttonElem.getAttribute('disabled')) {
 			return;
 		}
